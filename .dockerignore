@@ -1,0 +1,13 @@
+.git
+.idea
+.vscode
+.vs
+.dockerignore
+
+README.md
+LICENSE.md
+
+
+build
+node_modules
+Dockerfile.*
