@@ -42,6 +42,14 @@ const MyNavbar = () => {
         </Button>
         <Button
           component={Link}
+          to='/catalog'
+          color='secondary'
+          className={classes.topBarNavButton}
+        >
+          {strings.NAVBAR.CATALOG}
+        </Button>
+        <Button
+          component={Link}
           to='/address'
           color='secondary'
           className={classes.topBarNavButton}

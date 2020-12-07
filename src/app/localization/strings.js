@@ -5,6 +5,7 @@ const strings = new LocalizedStrings({
     APP_NAME: 'DRS UI',
     NAVBAR: {
       ADDRESS: 'Connection',
+      CATALOG: 'Catalog',
       HOME: 'home'
     },
     HOME: {
@@ -21,6 +22,7 @@ const strings = new LocalizedStrings({
     APP_NAME: 'DRS UI',
     NAVBAR: {
       ADDRESS: 'Połączenie',
+      CATALOG: 'Katalog',
       HOME: 'home'
     },
     HOME: {
