@@ -1,32 +1,32 @@
 import { Grid } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { green, red } from '@material-ui/core/colors';
+import { Button, TextField } from '@material-ui/core';
+
 import {
   selectProxyUrl,
   selectRegistryUrl,
 } from '../../redux/slices/addressSlice';
-import { Button, TextField } from '@material-ui/core';
 
-import strings from '../../localization/strings';
-import { makeStyles } from '@material-ui/core/styles';
 import {
   checkConnectionToProxy,
   checkConnectionRegistry,
 } from './../../services/connectionChecker';
 
+import strings from '../../localization/strings';
+
 const AddressChanger = (props) => {
-  const proxyAddress = useSelector(selectRegistryUrl);
-  const registryAddress = useSelector(selectProxyUrl);
+  const proxyAddress = useSelector(selectProxyUrl);
+  const registryAddress = useSelector(selectRegistryUrl);
 
-  const [proxyAddressInput, setProxyAddress] = useState(
-    'http://192.168.0.133:2999'
-  );
+  const [proxyAddressInput, setProxyAddress] = useState('');
+  const [registryAddressInput, setRegistryAddress] = useState('');
 
-  const [registryAddressInput, setRegistryAddress] = useState(
-    'http://192.168.0.133:9997'
-  );
+  useEffect(() => {
+    setProxyAddress(proxyAddress);
+    setRegistryAddress(registryAddress);
 
+  }, []);
 
   const [isProxyAddressCorrect, setProxyAddressCorrectness] = useState(null);
   const [isRegistryAddressCorrect, setRegistryAddressCorrectness] = useState(
