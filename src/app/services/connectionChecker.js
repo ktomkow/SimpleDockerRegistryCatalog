@@ -15,9 +15,6 @@ export const checkConnectionToProxy = async (address) => {
     .catch(function (error) {
       console.log('AXIOS Error: ', error);
       return false;
-    })
-    .finally(() => {
-      return false;
     });
 };
 
@@ -36,9 +33,6 @@ export const checkConnectionRegistry = async (proxyAddress, registryAddress) => 
     })
     .catch(function (error) {
       console.log('AXIOS Error: ', error);
-      return false;
-    })
-    .finally(() => {
       return false;
     });
 };

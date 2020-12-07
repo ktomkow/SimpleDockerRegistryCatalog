@@ -8,6 +8,8 @@ const strings = new LocalizedStrings({
     ADDRESS: {
       SAVE: 'Save',
       CHECK_CONNECTION: 'Check connection',
+      PROXY_ADDRESS: 'Proxy address',
+      REGISTRY_ADDRESS: 'Registry address'
     },
   },
   pl: {
@@ -17,6 +19,8 @@ const strings = new LocalizedStrings({
     ADDRESS: {
       SAVE: 'Zapisz',
       CHECK_CONNECTION: 'Sprawdź połączenie',
+      PROXY_ADDRESS: 'Adres proxy',
+      REGISTRY_ADDRESS: 'Adres rejestru'
     },
   },
 });
