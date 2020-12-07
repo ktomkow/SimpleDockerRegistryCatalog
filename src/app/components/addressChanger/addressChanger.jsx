@@ -1,11 +1,14 @@
 import { Container, Grid } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { Button, TextField } from '@material-ui/core';
 
 import {
   selectProxyUrl,
   selectRegistryUrl,
+  updateProxyAddress,
+  updateRegistryAddress
 } from '../../redux/slices/addressSlice';
 
 import {
@@ -16,6 +19,7 @@ import {
 import strings from '../../localization/strings';
 
 const AddressChanger = (props) => {
+  const dispatch = useDispatch();
   const proxyAddress = useSelector(selectProxyUrl);
   const registryAddress = useSelector(selectRegistryUrl);
 
@@ -57,6 +61,9 @@ const AddressChanger = (props) => {
       checkConnection: () => {
         checkProxyConnection();
       },
+      saveAddress: () => {
+        dispatch(updateProxyAddress(proxyAddressInput));
+      }
     },
     {
       label: strings.ADDRESS.REGISTRY_ADDRESS,
@@ -68,6 +75,9 @@ const AddressChanger = (props) => {
       checkConnection: () => {
         checkRegistryConnection();
       },
+      saveAddress: () => {
+        dispatch(updateRegistryAddress(registryAddressInput));
+      }
     },
   ];
 
@@ -112,6 +122,7 @@ const AddressChanger = (props) => {
                   <Button
                     disabled={!(element.isCorrect === true)}
                     type='submit'
+                    onClick={element.saveAddress}
                   >
                     {strings.ADDRESS.SAVE}
                   </Button>
