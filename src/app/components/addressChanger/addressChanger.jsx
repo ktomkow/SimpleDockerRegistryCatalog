@@ -15,29 +15,19 @@ import {
   checkConnectionRegistry,
 } from './../../services/connectionChecker';
 
-const useStyles = makeStyles((theme) => ({
-  root: {},
-  validColor: {
-    color: green,
-  },
-  invalidColor: {
-    color: red,
-  },
-}));
-
 const AddressChanger = (props) => {
-  const classes = useStyles();
-  const registryAddress = useSelector(selectProxyUrl);
   const proxyAddress = useSelector(selectRegistryUrl);
+  const registryAddress = useSelector(selectProxyUrl);
 
-  const [registryAddressInput, setRegistryAddress] = useState(
-    'http://192.168.0.133:9997'
-  );
   const [proxyAddressInput, setProxyAddress] = useState(
     'http://192.168.0.133:2999'
   );
 
-  const [isAddressCorrect, setAddressCorrectness] = useState(null);
+  const [registryAddressInput, setRegistryAddress] = useState(
+    'http://192.168.0.133:9997'
+  );
+
+
   const [isProxyAddressCorrect, setProxyAddressCorrectness] = useState(null);
   const [isRegistryAddressCorrect, setRegistryAddressCorrectness] = useState(
     null
@@ -45,7 +35,6 @@ const AddressChanger = (props) => {
 
   const checkProxyConnection = async () => {
     const isCorrect = await checkConnectionToProxy(proxyAddressInput);
-    console.log(`PROXY CONNECTION CORRECT: ${isCorrect}`);
     setProxyAddressCorrectness(isCorrect);
   };
 
@@ -54,36 +43,30 @@ const AddressChanger = (props) => {
       proxyAddressInput,
       registryAddressInput
     );
-    console.log(`REGISTRY CONNECTION CORRECT: ${isCorrect}`);
-  };
-
-  const handleChange = (e) => {
-    setProxyAddress(e.target.value);
-  };
-
-  const getInputCorrectnessCss = (flag) => {
-    console.log('dupa');
-    switch (flag) {
-      case true:
-        return classes.validColor;
-      case false:
-        return '';
-      default:
-        return '';
-    }
+    setRegistryAddressCorrectness(isCorrect);
   };
 
   const addresses = [
     {
       label: strings.ADDRESS.PROXY_ADDRESS,
+      isCorrect: isProxyAddressCorrect,
+      value: proxyAddressInput,
       handleChange: (e) => {
         setProxyAddress(e.target.value);
       },
       checkConnection: () => {
         checkProxyConnection();
       },
-      inputClasses: () => {
-        return getInputCorrectnessCss(isProxyAddressCorrect);
+    },
+    {
+      label: strings.ADDRESS.REGISTRY_ADDRESS,
+      isCorrect: isRegistryAddressCorrect,
+      value: registryAddressInput,
+      handleChange: (e) => {
+        setRegistryAddress(e.target.value);
+      },
+      checkConnection: () => {
+        checkRegistryConnection();
       },
     },
   ];
@@ -103,11 +86,11 @@ const AddressChanger = (props) => {
             >
               <Grid item>
                 <TextField
-                  error={isProxyAddressCorrect === false}
+                  error={element.isCorrect === false}
                   id={`address-input-${index}`}
                   label={element.label}
                   variant='outlined'
-                  value={proxyAddressInput}
+                  value={element.value}
                   onChange={element.handleChange}
                   autoComplete='url'
                   type='url'
@@ -127,7 +110,7 @@ const AddressChanger = (props) => {
                 </Grid>
                 <Grid item>
                   <Button
-                    disabled={!(isProxyAddressCorrect === true)}
+                    disabled={!(element.isCorrect === true)}
                     type='submit'
                   >
                     {strings.ADDRESS.SAVE}
