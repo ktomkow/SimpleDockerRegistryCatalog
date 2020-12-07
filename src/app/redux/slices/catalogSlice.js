@@ -6,11 +6,14 @@ export const catalogSlice = createSlice({
     catalog: ['a', 'b', 'c']
   },
   reducers: {
+    requestCatalogUpdate: (state) => {
+      state.catalog = ['e','f']
+    }
   },
 });
 
 export const {
-
+  requestCatalogUpdate
 } = catalogSlice.actions;
 
 export const selectCatalog = (state) => state.catalog.catalog;

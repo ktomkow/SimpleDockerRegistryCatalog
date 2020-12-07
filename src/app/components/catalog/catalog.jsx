@@ -6,12 +6,16 @@ import {
   Paper,
   Typography,
 } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectCatalog } from './../../redux/slices/catalogSlice';
+import {
+  selectCatalog,
+  requestCatalogUpdate,
+} from './../../redux/slices/catalogSlice';
 import { makeStyles } from '@material-ui/core/styles';
 
 import strings from '../../localization/strings';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,8 +31,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Catalog = (props) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const images = useSelector(selectCatalog);
+
+  useEffect(() => {
+    if (!images || images.length === 0) {
+      dispatch(requestCatalogUpdate());
+    }
+  }, []);
+
   return (
     <Container className={classes.root}>
       <Grid
