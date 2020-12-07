@@ -17,6 +17,9 @@ const strings = new LocalizedStrings({
       PROXY_ADDRESS: 'Proxy address',
       REGISTRY_ADDRESS: 'Registry address',
     },
+    CATALOG: {
+      TITLE: "Images on hub"
+    }
   },
   pl: {
     APP_NAME: 'DRS UI',
@@ -34,6 +37,9 @@ const strings = new LocalizedStrings({
       PROXY_ADDRESS: 'Adres proxy',
       REGISTRY_ADDRESS: 'Adres rejestru',
     },
+    CATALOG: {
+      TITLE: "Obrazy w rejestrze"
+    }
   },
 });
 
