@@ -9,7 +9,7 @@ import { Button, TextField } from '@material-ui/core';
 
 import strings from '../../localization/strings';
 import { makeStyles } from '@material-ui/core/styles';
-import { checkConnectionToProxy } from './../../services/connectionChecker';
+import { checkConnectionToProxy, checkConnectionRegistry } from './../../services/connectionChecker';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -35,9 +35,14 @@ const AddressChanger = (props) => {
 
   const [isAddressCorrect, setAddressCorrectness] = useState(null);
 
-  const checkConnection = async () => {
+  const checkProxyConnection = async () => {
     const isCorrect = await checkConnectionToProxy(proxyAddressInput);
     console.log(`PROXY CONNECTION CORRECT: ${isCorrect}`);
+  };
+
+  const checkRegistryConnection = async () => {
+    const isCorrect = await checkConnectionRegistry(proxyAddressInput, registryAddressInput);
+    console.log(`REGISTRY CONNECTION CORRECT: ${isCorrect}`);
   };
 
   const handleChange = (e) => {
@@ -45,7 +50,8 @@ const AddressChanger = (props) => {
   };
 
   return (
-    <Grid
+    <div>
+      <Grid
       container
       spacing={1}
       direction='row'
@@ -67,7 +73,7 @@ const AddressChanger = (props) => {
       </Grid>
       <Grid item container direction='row' justify='center' alignItems='center'>
         <Grid item>
-          <Button onClick={checkConnection}>
+          <Button onClick={checkProxyConnection}>
             {strings.ADDRESS.CHECK_CONNECTION}
           </Button>
         </Grid>
@@ -78,6 +84,42 @@ const AddressChanger = (props) => {
         </Grid>
       </Grid>
     </Grid>
+
+    <Grid
+      container
+      spacing={1}
+      direction='row'
+      justify='center'
+      alignItems='center'
+      style={{ margin: '2em' }}
+    >
+      <Grid item>
+        <form autoComplete='off'>
+          <TextField
+            error={isAddressCorrect === false}
+            id='address-input'
+            label='Outlined'
+            variant='outlined'
+            value={registryAddressInput}
+            onChange={handleChange}
+          />
+        </form>
+      </Grid>
+      <Grid item container direction='row' justify='center' alignItems='center'>
+        <Grid item>
+          <Button onClick={checkRegistryConnection}>
+            {strings.ADDRESS.CHECK_CONNECTION}
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button disabled={!(isAddressCorrect === true)}>
+            {strings.ADDRESS.SAVE}
+          </Button>
+        </Grid>
+      </Grid>
+    </Grid>
+    </div>
+    
   );
 };
 
