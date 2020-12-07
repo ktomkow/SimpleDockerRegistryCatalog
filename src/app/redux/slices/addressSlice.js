@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 export const addressSlice = createSlice({
   name: 'address',
   initialState: {
-    proxyUrl: '192.168.0.133:2229',
-    registryUrl: '172.17.0.1:9997',
+    proxyUrl: 'http://192.168.0.133:2999',
+    registryUrl: 'http://192.168.0.133:9997',
   },
   reducers: {
     updateProxyAddress: (state, action) => {
@@ -23,7 +23,7 @@ export const {
   updateRegistryAddress,
 } = addressSlice.actions;
 
-export const selectProxyUrl = (state) => state.address.url;
-export const selectRegistryUrl = (state) => state.address.url;
+export const selectProxyUrl = (state) => state.address.proxyUrl;
+export const selectRegistryUrl = (state) => state.address.registryUrl;
 
 export default addressSlice.reducer;
