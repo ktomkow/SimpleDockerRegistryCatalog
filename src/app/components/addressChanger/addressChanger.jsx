@@ -1,4 +1,4 @@
-import { Grid } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, TextField } from '@material-ui/core';
@@ -72,7 +72,7 @@ const AddressChanger = (props) => {
   ];
 
   return (
-    <div>
+    <Container>
       {addresses.map((element, index) => {
         return (
           <form autoComplete='on' key={index} noValidate>
@@ -121,7 +121,7 @@ const AddressChanger = (props) => {
           </form>
         );
       })}
-    </div>
+    </Container>
   );
 };
 
