@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import {
   selectCatalog,
   requestCatalogUpdate,
+  requestImageTagsList,
 } from './../../redux/slices/catalogSlice';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -41,6 +42,10 @@ const Catalog = (props) => {
     }
   }, []);
 
+  const retrieveTagsList = (imageName) => () => {
+    dispatch(requestImageTagsList(imageName));
+  };
+
   return (
     <Container className={classes.root}>
       <Grid
@@ -62,6 +67,7 @@ const Catalog = (props) => {
                     button
                     className={classes.listElement}
                     key={element}
+                    onClick={retrieveTagsList(element)}
                   >
                     {element}
                   </ListItem>
