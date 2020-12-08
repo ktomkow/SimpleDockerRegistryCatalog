@@ -3,7 +3,7 @@ import indigo from '@material-ui/core/colors/indigo';
 import orange from '@material-ui/core/colors/orange';
 import lime from '@material-ui/core/colors/lime';
 import lightBlue from '@material-ui/core/colors/lightBlue';
-import { grey } from '@material-ui/core/colors';
+import { blue, grey } from '@material-ui/core/colors';
 
 export const theme = createMuiTheme({
   palette: {
@@ -19,6 +19,7 @@ export const theme = createMuiTheme({
     },
     background: {
       paper: grey[200],
+      default: blue[50] 
     },
     greYeah: { // yeah, it is possible to define my own styles
       light: grey[300],

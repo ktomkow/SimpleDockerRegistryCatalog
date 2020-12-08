@@ -14,18 +14,6 @@ const useStyles = makeStyles((theme) => ({
     border: 'groove 2px',
     borderRadius: '0.3em',
   },
-  colorLight: {
-    padding: '1em',
-    backgroundColor: theme.palette.primary.light,
-  },
-  colorMain: {
-    padding: '1em',
-    backgroundColor: theme.palette.primary.main,
-  },
-  colorDark: {
-    padding: '1em',
-    backgroundColor: theme.palette.primary.dark,
-  },
   tag: {
     width: '95%',
     transition: '0.3s',
@@ -51,9 +39,6 @@ const ImageTags = (props) => {
           {image.name}
         </Typography>
       )}
-      <Typography className={classes.colorLight}>Light</Typography>
-      <Typography className={classes.colorMain}>Main</Typography>
-      <Typography className={classes.colorDark}>Dark</Typography>
 
       <List>
         {image.tags.map((tag) => {
