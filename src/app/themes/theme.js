@@ -54,7 +54,9 @@ export const darkTheme = createMuiTheme({
       dark: grey[900],
     },
     text: {
-      primary: '#a9afb5'
+      primary: '#a9afb5',
+      secondary: '#7b8085',
+      disabled: '#ff0000'
     }
   },
   status: {
