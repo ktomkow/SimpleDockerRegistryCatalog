@@ -6,7 +6,7 @@ const strings = new LocalizedStrings({
     NAVBAR: {
       ADDRESS: 'Connection',
       CATALOG: 'Catalog',
-      HOME: 'home'
+      HOME: 'home',
     },
     HOME: {
       HELLO: 'Hello, World!',
@@ -18,15 +18,16 @@ const strings = new LocalizedStrings({
       REGISTRY_ADDRESS: 'Registry address',
     },
     CATALOG: {
-      TITLE: "Images on hub"
-    }
+      IMAGES_IN_REGISTER: 'Images on hub',
+      TAGS_OF_IMAGE: 'Image tags',
+    },
   },
   pl: {
     APP_NAME: 'DRS UI',
     NAVBAR: {
       ADDRESS: 'Połączenie',
       CATALOG: 'Katalog',
-      HOME: 'home'
+      HOME: 'home',
     },
     HOME: {
       HELLO: 'Witaj, Świecie!',
@@ -38,8 +39,9 @@ const strings = new LocalizedStrings({
       REGISTRY_ADDRESS: 'Adres rejestru',
     },
     CATALOG: {
-      TITLE: "Obrazy w rejestrze"
-    }
+      IMAGES_IN_REGISTER: 'Obrazy w rejestrze',
+      TAGS_OF_IMAGE: 'Tagi obrazu',
+    },
   },
 });
 

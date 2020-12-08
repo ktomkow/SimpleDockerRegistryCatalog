@@ -1,4 +1,4 @@
-import { Container, Grid } from '@material-ui/core';
+import { Container, Grid, Paper } from '@material-ui/core';
 import React from 'react';
 
 import ImagesList from './imagesList';
@@ -10,10 +10,23 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: '2em',
   },
+  listPaper: {
+    width: '100%',
+    maxWidth: '30em',
+    backgroundColor: theme.palette.background.paper,
+  },
 }));
 
 const Catalog = (props) => {
   const classes = useStyles();
+
+  const CatalogPaper = (props) => {
+    return (
+      <Paper className={props.className} elevation={6}>
+        {props.children}
+      </Paper>
+    );
+  };
 
   return (
     <Container className={classes.root}>
@@ -22,10 +35,14 @@ const Catalog = (props) => {
         spacing={1}
         direction='row'
         justify='space-evenly'
-        alignItems='center'
+        alignItems='flex-start'
       >
-        <ImagesList />
-        <ImageTags />
+        <CatalogPaper className={classes.listPaper}>
+          <ImagesList />
+        </CatalogPaper>
+        <CatalogPaper className={classes.listPaper}>
+          <ImageTags />
+        </CatalogPaper>
       </Grid>
     </Container>
   );

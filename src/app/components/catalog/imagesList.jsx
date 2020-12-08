@@ -1,12 +1,6 @@
 import React, { useEffect } from 'react';
 
-import {
-  Grid,
-  List,
-  ListItem,
-  Paper,
-  Typography,
-} from '@material-ui/core';
+import { List, ListItem, Typography } from '@material-ui/core';
 
 import { useSelector } from 'react-redux';
 import {
@@ -21,12 +15,9 @@ import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   title: { padding: '0.4em' },
-  listPaper: {
-    width: '100%',
-    maxWidth: '30em',
-    backgroundColor: theme.palette.background.paper,
+  listElement: {
+    '&:hover, &:focus': { backgroundColor: theme.palette.primary.light },
   },
-  listElement: {},
 }));
 
 const ImagesList = (props) => {
@@ -45,27 +36,25 @@ const ImagesList = (props) => {
   };
 
   return (
-    <Grid item container>
-      <Paper className={classes.listPaper} elevation={6}>
-        <Typography variant='h4' className={classes.title}>
-          {strings.CATALOG.TITLE}
-        </Typography>
-        <List>
-          {images.map((element) => {
-            return (
-              <ListItem
-                button
-                className={classes.listElement}
-                key={element}
-                onClick={retrieveTagsList(element)}
-              >
-                {element}
-              </ListItem>
-            );
-          })}
-        </List>
-      </Paper>
-    </Grid>
+    <>
+      <Typography variant='h4' className={classes.title}>
+        {strings.CATALOG.IMAGES_IN_REGISTER}
+      </Typography>
+      <List>
+        {images.map((element) => {
+          return (
+            <ListItem
+              button
+              className={classes.listElement}
+              key={element}
+              onClick={retrieveTagsList(element)}
+            >
+              {element}
+            </ListItem>
+          );
+        })}
+      </List>
+    </>
   );
 };
 

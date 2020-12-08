@@ -4,13 +4,11 @@ import axios from 'axios';
 
 import { combine } from '../../services/addressCombiner';
 
-import { selectProxyUrl, selectRegistryUrl } from './addressSlice';
-
 export const catalogSlice = createSlice({
   name: 'catalog',
   initialState: {
     catalog: [],
-    imageTagsList: {},
+    imageTagsList: { name: '', tags: [] },
   },
   reducers: {
     updateCatalog: (state, action) => {
@@ -20,7 +18,7 @@ export const catalogSlice = createSlice({
       state.imageTagsList = action.payload;
     },
     clearImageTagsList: (state) => {
-      state.imageTagsList = {};
+      state.imageTagsList = { name: '', tags: [] };
     },
   },
 });
