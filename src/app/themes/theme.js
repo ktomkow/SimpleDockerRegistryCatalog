@@ -34,8 +34,28 @@ export const theme = createMuiTheme({
 
 export const darkTheme = createMuiTheme({
   palette: {
-    primary: lime,
-    secondary: lightBlue,
+    primary: {
+      light: '#004a00',
+      main: '#003300',
+      dark: '#002200',
+    },
+    secondary: {
+      light: orange[700],
+      main: orange[800],
+      dark: orange[900],
+    },
+    background: {
+      paper: '#0a3444',
+      default: '#380538'
+    },
+    greYeah: { // yeah, it is possible to define my own styles
+      light: grey[300],
+      main: grey[700],
+      dark: grey[900],
+    },
+    text: {
+      primary: '#a9afb5'
+    }
   },
   status: {
     danger: 'orange',

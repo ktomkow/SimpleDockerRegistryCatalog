@@ -16,7 +16,7 @@ import { useDispatch } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
   title: { padding: '0.4em' },
   listElement: {
-    '&:hover, &:focus': { backgroundColor: theme.palette.primary.light },
+    '&:hover, &:focus': { backgroundColor: theme.palette.primary.main },
   },
 }));
 

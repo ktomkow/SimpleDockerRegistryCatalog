@@ -1,4 +1,4 @@
-import { Container, Grid } from '@material-ui/core';
+import { Container, Grid, Paper, Box } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -8,7 +8,7 @@ import {
   selectProxyUrl,
   selectRegistryUrl,
   updateProxyAddress,
-  updateRegistryAddress
+  updateRegistryAddress,
 } from '../../redux/slices/addressSlice';
 
 import {
@@ -17,8 +17,24 @@ import {
 } from './../../services/connectionChecker';
 
 import strings from '../../localization/strings';
+import { makeStyles } from '@material-ui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  box: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paper: {
+    paddingTop: '4em',
+    paddingBottom: '4em',
+    marginTop: '4em',
+    display: 'inline-block',
+  },
+}));
 
 const AddressChanger = (props) => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const proxyAddress = useSelector(selectProxyUrl);
   const registryAddress = useSelector(selectRegistryUrl);
@@ -29,7 +45,6 @@ const AddressChanger = (props) => {
   useEffect(() => {
     setProxyAddress(proxyAddress);
     setRegistryAddress(registryAddress);
-
   }, []);
 
   const [isProxyAddressCorrect, setProxyAddressCorrectness] = useState(null);
@@ -63,7 +78,7 @@ const AddressChanger = (props) => {
       },
       saveAddress: () => {
         dispatch(updateProxyAddress(proxyAddressInput));
-      }
+      },
     },
     {
       label: strings.ADDRESS.REGISTRY_ADDRESS,
@@ -77,62 +92,63 @@ const AddressChanger = (props) => {
       },
       saveAddress: () => {
         dispatch(updateRegistryAddress(registryAddressInput));
-      }
+      },
     },
   ];
 
   return (
-    <Container>
-      {addresses.map((element, index) => {
-        return (
-          <form autoComplete='on' key={index} noValidate>
-            <Grid
-              container
-              spacing={1}
-              direction='row'
-              justify='center'
-              alignItems='center'
-              style={{ margin: '2em' }}
-            >
-              <Grid item>
-                <TextField
-                  error={element.isCorrect === false}
-                  id={`address-input-${index}`}
-                  label={element.label}
-                  variant='outlined'
-                  value={element.value}
-                  onChange={element.handleChange}
-                  autoComplete='url'
-                  type='url'
-                />
-              </Grid>
+    <Box className={classes.box}>
+      <Paper elevation={6} className={classes.paper}>
+        {addresses.map((element, index) => {
+          return (
+            <form autoComplete='on' key={index} noValidate>
               <Grid
-                item
                 container
+                spacing={1}
                 direction='row'
                 justify='center'
                 alignItems='center'
               >
                 <Grid item>
-                  <Button onClick={element.checkConnection}>
-                    {strings.ADDRESS.CHECK_CONNECTION}
-                  </Button>
+                  <TextField
+                    error={element.isCorrect === false}
+                    id={`address-input-${index}`}
+                    label={element.label}
+                    variant='outlined'
+                    value={element.value}
+                    onChange={element.handleChange}
+                    autoComplete='url'
+                    type='url'
+                  />
                 </Grid>
-                <Grid item>
-                  <Button
-                    disabled={!(element.isCorrect === true)}
-                    type='submit'
-                    onClick={element.saveAddress}
-                  >
-                    {strings.ADDRESS.SAVE}
-                  </Button>
+                <Grid
+                  item
+                  container
+                  direction='row'
+                  justify='center'
+                  alignItems='center'
+                >
+                  <Grid item>
+                    <Button onClick={element.checkConnection}>
+                      {strings.ADDRESS.CHECK_CONNECTION}
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button
+                      disabled={!(element.isCorrect === true)}
+                      type='submit'
+                      onClick={element.saveAddress}
+                    >
+                      {strings.ADDRESS.SAVE}
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-          </form>
-        );
-      })}
-    </Container>
+            </form>
+          );
+        })}
+      </Paper>
+    </Box>
   );
 };
 

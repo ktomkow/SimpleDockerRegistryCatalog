@@ -13,13 +13,15 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '0.5em',
     border: 'groove 2px',
     borderRadius: '0.3em',
+    borderColor: theme.palette.primary.dark,
+    padding: '0.2em'
   },
   tag: {
     width: '95%',
     transition: '0.3s',
     borderRadius: '0.5em',
     '&:hover, &:focus': {
-      backgroundColor: theme.palette.primary.light,
+      backgroundColor: theme.palette.primary.main,
       marginLeft: '0.5em',
     },
   },
