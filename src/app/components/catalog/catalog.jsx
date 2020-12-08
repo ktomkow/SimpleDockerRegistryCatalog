@@ -4,6 +4,7 @@ import React from 'react';
 import ImagesList from './imagesList';
 
 import { makeStyles } from '@material-ui/core/styles';
+import ImageTags from './imageTags';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,10 +24,8 @@ const Catalog = (props) => {
         justify='space-evenly'
         alignItems='center'
       >
-        <Grid item container>
-          <ImagesList />
-        </Grid>
-        <Grid item container></Grid>
+        <ImagesList />
+        <ImageTags />
       </Grid>
     </Container>
   );

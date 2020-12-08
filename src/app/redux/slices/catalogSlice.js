@@ -60,6 +60,6 @@ export const requestImageTagsList = (image) => (dispatch, getState) => {
 };
 
 export const selectCatalog = (state) => state.catalog.catalog;
-export const selectImageDetails = (state) => state.catalog.imageDetails;
+export const selectImageTags = (state) => state.catalog.imageTagsList;
 
 export default catalogSlice.reducer;
