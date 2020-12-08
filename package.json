@@ -1,5 +1,5 @@
 {
-  "name": "myemptyreactproject",
+  "name": "simple-docker-registry-catalog",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
