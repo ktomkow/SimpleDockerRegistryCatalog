@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
 
 import strings from '../../localization/strings';
+import ThemeSwitch from './themeSwitch';
 
 const useStyles = makeStyles(() => ({
   typographyStyles: {
@@ -32,6 +33,7 @@ const MyNavbar = () => {
         <Typography className={classes.typographyStyles} variant='h4'>
           {strings.APP_NAME}
         </Typography>
+
         <Button
           component={Link}
           to='/'
@@ -56,6 +58,7 @@ const MyNavbar = () => {
         >
           {strings.NAVBAR.ADDRESS}
         </Button>
+        <ThemeSwitch />
       </Toolbar>
     </AppBar>
   );
