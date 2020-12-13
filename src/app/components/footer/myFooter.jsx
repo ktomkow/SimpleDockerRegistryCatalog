@@ -45,17 +45,20 @@ const MyFooter = () => {
   );
 
   useEffect(() => {
+    check();
+    const interval = setInterval(() => {
+      check();
+    }, 10000);
+    return () => clearInterval(interval);
+  });
+
+  const check = () => {
     checkProxyConnection();
     checkRegistryConnection();
-
-    setInterval(() => {
-      checkProxyConnection();
-      checkRegistryConnection();
-    }, 10000);
-  }, []);
+  };
 
   const checkProxyConnection = async () => {
-    let isCorrect = await checkConnectionToProxy(proxyAddress);
+    const isCorrect = await checkConnectionToProxy(proxyAddress);
     setProxyAddressCorrectness(isCorrect);
   };
 
