@@ -76,7 +76,8 @@ const AddressChanger = (props) => {
       checkConnection: () => {
         checkProxyConnection();
       },
-      saveAddress: () => {
+      saveAddress: (e) => {
+        e.preventDefault();
         dispatch(updateProxyAddress(proxyAddressInput));
       },
     },
@@ -90,7 +91,8 @@ const AddressChanger = (props) => {
       checkConnection: () => {
         checkRegistryConnection();
       },
-      saveAddress: () => {
+      saveAddress: (e) => {
+        e.preventDefault();
         dispatch(updateRegistryAddress(registryAddressInput));
       },
     },
