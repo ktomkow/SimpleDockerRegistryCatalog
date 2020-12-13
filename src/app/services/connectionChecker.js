@@ -9,11 +9,9 @@ export const checkConnectionToProxy = async (address) => {
       timeout: 2000,
     })
     .then(function (response) {
-      console.log('AXIOS Success: ', response);
       return true;
     })
     .catch(function (error) {
-      console.log('AXIOS Error: ', error);
       return false;
     });
 };
@@ -28,11 +26,9 @@ export const checkConnectionRegistry = async (proxyAddress, registryAddress) => 
       timeout: 2000,
     })
     .then(function (response) {
-      console.log('AXIOS Success: ', response);
       return true;
     })
     .catch(function (error) {
-      console.log('AXIOS Error: ', error);
       return false;
     });
 };

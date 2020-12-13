@@ -6,6 +6,7 @@ import NotFound from './app/components/notFound/notFound';
 import AddressChanger from './app/components/addressChanger/addressChanger';
 import MyNavbar from './app/components/navbar/myNavbar';
 import Catalog from './app/components/catalog/catalog';
+import MyFooter from './app/components/footer/myFooter';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path='/catalog' component={Catalog} />
           <Route component={NotFound} />
         </Switch>
+        <MyFooter/>
     </Router>
   );
 };
