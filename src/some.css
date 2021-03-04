@@ -1,7 +1,5 @@
 .element {
-  opacity: 1;
-  animation-duration: 1s;
-  animation-name: show;
+  animation: show 1s ease-in-out;
 }
 
 @keyframes show {
@@ -14,6 +12,18 @@
 }
 
 .actual-container {
-  background-color: orange;
+  
   padding: 1%;
+}
+
+.actual-empty-container {
+  max-height: 0px;
+  transition: max-height .2s;
+  background-color: blue;
+}
+
+.actual-nonempty-container {
+  max-height: 1000px;
+  transition: max-height 2s;
+  background-color: orange;
 }
