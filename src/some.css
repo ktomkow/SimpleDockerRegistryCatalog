@@ -12,3 +12,8 @@
     opacity: 1;
   }
 }
+
+.actual-container {
+  background-color: orange;
+  padding: 1%;
+}
