@@ -1,0 +1,14 @@
+.element {
+  opacity: 1;
+  animation-duration: 1s;
+  animation-name: show;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

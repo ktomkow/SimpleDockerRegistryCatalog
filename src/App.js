@@ -7,19 +7,11 @@ import AddressChanger from './app/components/addressChanger/addressChanger';
 import MyNavbar from './app/components/navbar/myNavbar';
 import Catalog from './app/components/catalog/catalog';
 import MyFooter from './app/components/footer/myFooter';
+import Example from './Example';
 
 const App = () => {
   return (
-    <Router>
-      <MyNavbar />
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/address' component={AddressChanger} />
-          <Route path='/catalog' component={Catalog} />
-          <Route component={NotFound} />
-        </Switch>
-        <MyFooter/>
-    </Router>
+    <Example/>
   );
 };
 
